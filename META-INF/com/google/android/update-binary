@@ -1,0 +1,26 @@
+umask 022
+ui_print() { echo "$1"; }
+
+OUTFD=$2
+ZIPFILE=$3
+
+mount /data 2>/dev/null
+
+if [ -f /data/adb/magisk/util_functions.sh ]; then
+  . /data/adb/magisk/util_functions.sh
+  install_module
+  exit 0
+fi
+
+MODID=fix_himax_touch
+MODPATH=/data/adb/modules_update/$MODID
+rm -rf "$MODPATH"
+mkdir -p "$MODPATH"
+unzip -o "$ZIPFILE" -x 'META-INF/*' -d "$MODPATH" >&2
+chmod 755 "$MODPATH/service.sh"
+chmod 644 "$MODPATH/module.prop"
+touch "$MODPATH/update"
+mkdir -p "/data/adb/modules/$MODID"
+cp -f "$MODPATH/module.prop" "/data/adb/modules/$MODID/module.prop"
+ui_print "- Installed $MODID successfully!"
+exit 0
