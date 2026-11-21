@@ -1,6 +1,6 @@
-d=fix_himax_touch
+id=fix_himax_touch
 name=Himax HX83112F Touch Fix (SM-A145P)
-version=v1.0
-versionCode=1
-author=p1r0gW
-description=Fixes non-responsive aftermarket Himax touchscreen on Android 15 after reboot by rebinding spi2.0
+version=v1.1
+versionCode=2
+author=Community
+description=Fixes non-responsive aftermarket Himax HX83112F touchscreen on Samsung SM-A145P (Android 15) after reboot by reliably rebinding spi2.0
